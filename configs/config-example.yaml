@@ -1,0 +1,106 @@
+# 应用基础配置
+app:
+  name: "gin-auth-demo"
+  version: "1.0.0"
+  env: "development"  # development, staging, production
+  debug: true
+
+# 服务器配置
+server:
+  host: "0.0.0.0"
+  port: 8080
+  read_timeout: 30s
+  write_timeout: 30s
+  idle_timeout: 60s
+
+# 数据库配置
+database:
+  driver: "mysql"
+  host: "localhost"
+  port: 3306
+  username: "your-username"
+  password: "your-password"
+  database: "gin_auth"
+  charset: "utf8mb4"
+  parse_time: true
+  loc: "Local"
+  # 连接池配置
+  max_idle_conns: 10
+  max_open_conns: 100
+  conn_max_lifetime: 3600s  # 秒
+  # 日志级别: silent, error, warn, info
+  log_level: "info"
+
+# JWT配置
+jwt:
+  secret: "your-secret-key-change-in-production"
+  expire_hours: 24
+  issuer: "gin-auth-demo"
+  # token刷新配置
+  refresh_expire_days: 7
+
+# Redis配置（可选）
+redis:
+  enabled: false
+  host: "localhost"
+  port: 6379
+  password: ""
+  db: 0
+  pool_size: 10
+
+# 日志配置
+log:
+  level: "debug"  # debug, info, warn, error
+  format: "json"  # json, text
+  output: "stdout"  # stdout, file
+  file_path: "logs/app.log"
+  max_size: 100  # MB
+  max_backups: 3
+  max_age: 28  # days
+  compress: true
+
+# 安全配置
+security:
+  # CORS跨域配置
+  cors:
+    enabled: true
+    allow_origins:
+      - "http://localhost:3000"
+      - "http://localhost:8080"
+    allow_methods:
+      - "GET"
+      - "POST"
+      - "PUT"
+      - "DELETE"
+      - "OPTIONS"
+    allow_headers:
+      - "Origin"
+      - "Content-Type"
+      - "Authorization"
+    allow_credentials: true
+    max_age: 3600
+  
+  # 速率限制
+  rate_limit:
+    enabled: true
+    requests_per_second: 10
+    burst: 20
+
+# 密码策略
+password_policy:
+  min_length: 8
+  require_uppercase: true
+  require_lowercase: true
+  require_numbers: true
+  require_special_chars: true
+  bcrypt_cost: 10
+
+# 邮件配置（用于邮箱验证等）
+email:
+  enabled: false
+  smtp_host: "smtp.gmail.com"
+  smtp_port: 587
+  username: "your-email@gmail.com"
+  password: "your-password"
+  from_email: "noreply@gin-auth-demo.com"
+  from_name: "Gin Auth Demo"
