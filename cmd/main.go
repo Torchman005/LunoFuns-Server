@@ -8,6 +8,7 @@ import (
     "LunoFuns-Server/database"
     "LunoFuns-Server/internal/models"
     "LunoFuns-Server/internal/routes"
+    "LunoFuns-Server/internal/minio"
     
     "github.com/gin-gonic/gin"
 )
@@ -32,6 +33,11 @@ func main() {
     // 初始化数据库
     if err := database.InitDB(); err != nil {
         log.Fatal("Failed to init database: ", err)
+    }
+
+    // 初始化MinIO
+    if err := minio.InitMinIO(&cfg.MinIO); err != nil {
+        log.Fatal("Failed to init MinIO: ", err)
     }
     
     // 自动迁移

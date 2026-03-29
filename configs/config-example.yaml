@@ -104,3 +104,12 @@ email:
   password: "your-password"
   from_email: "noreply@gin-auth-demo.com"
   from_name: "Gin Auth Demo"
+
+# MinIO配置
+minio:
+  endpoint: "localhost:9000"
+  access_key: "minioadmin"
+  secret_key: "minioadmin"
+  use_ssl: false
+  bucket_name: "lunofuns-videos"
+  url_prefix: "http://localhost:9000"

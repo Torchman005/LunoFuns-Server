@@ -24,7 +24,7 @@ func GenerateToken(userID uint64, email string, role int8) (string, error) {
         RegisteredClaims: jwt.RegisteredClaims{
             ExpiresAt: jwt.NewNumericDate(time.Now().Add(24 * time.Hour)),
             IssuedAt:  jwt.NewNumericDate(time.Now()),
-            Issuer:    "gin-auth-demo",
+            Issuer:    "LunoFuns",
         },
     }
     

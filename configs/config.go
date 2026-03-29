@@ -104,6 +104,15 @@ type EmailConfig struct {
 	FromName string `yaml:"from_name"`
 }
 
+type MinIOConfig struct {
+	Endpoint   string `yaml:"endpoint"`
+	AccessKey  string `yaml:"access_key"`
+	SecretKey  string `yaml:"secret_key"`
+	UseSSL     bool   `yaml:"use_ssl"`
+	BucketName string `yaml:"bucket_name"`
+	URLPrefix  string `yaml:"url_prefix"`
+}
+
 type Config struct {
 	App AppConfig `yaml:"app"`
 	Server ServerConfig `yaml:"server"`
@@ -114,6 +123,7 @@ type Config struct {
 	Security SecurityConfig `yaml:"security"`
 	PasswordPolicy PasswordPolicyConfig `yaml:"password_policy"`
 	Email EmailConfig `yaml:"email"`
+	MinIO MinIOConfig `yaml:"minio"`
 }
 
 var GlobalConfig *Config
